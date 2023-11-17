@@ -1,0 +1,48 @@
+Library System API
+
+APIs often serve up data in small pieces. The Library System API is intended to serve up data points to the calling application. Below is a list of entities that can be searched and hosted up by our app. Your responsibility is to make endpoints for each of the endpoints and host up the respective data. Classes will need to be designed around the data they represent (listed below). At your discretion, you can provide search capabilities that make sense regarding their fields. Data will be seeded from the data.sql file. The project will be checked into github and tests for each endpoint can be written using the method that you prefer.
+
+The library contains materials that the user can borrow.  These materials can be:
+• Books
+• Periodicals
+• Digital Materials
+At a minimum Users of the api may search for their next book in any of the following ways:
+• By Title
+• By author
+• By Genre
+User
+• Name
+• Address
+• Phone Number
+• Email
+Librarian
+• Name
+• Address
+• Phone Number
+• Email
+
+Lendable Material
+• Name or Title (eg, “Wall Street Journal” or “Harry Potter and the Sorcerer’s Stone”)
+Periodical
+• Publication Date
+• Periodicals must be viewed at the library.  They cannot be checked out
+Book
+• Author
+• Publisher
+• Genre
+Movie
+• Lead Actor(s)
+• Director
+• Screenwriter
+• Release date
+• Genre
+• Rating
+
+You will determine the Genre’s for books and movies.  Possibilities include:
+• Historical
+• Fantasy
+• Romance
+• Science Fiction
+• Fiction
+• Childrens
+• etc
