@@ -1,5 +1,7 @@
 package com.Library.controller;
 
+import com.Library.model.Author;
+import com.Library.model.Genre;
 import com.Library.model.Periodical;
 import com.Library.model.User;
 import com.Library.service.PeriodicalService;
@@ -34,6 +36,18 @@ public class PeriodicalController {
         else if(StringUtils.isNotBlank(notFilter)){
             periodicals = periodicalService.findByTitleNotContains(notFilter);
         }
+        else if(StringUtils.isNotBlank(filter)){
+            periodicals = periodicalService.findByGenreContains(filter);
+        }
+        else if(StringUtils.isNotBlank(notFilter)){
+            periodicals = periodicalService.findByGenreNotContains(notFilter);
+        }
+        else if(StringUtils.isNotBlank(filter)){
+            periodicals = periodicalService.findByAuthorContains(filter);
+        }
+        else if(StringUtils.isNotBlank(notFilter)){
+            periodicals = periodicalService.findByAuthorNotContains(notFilter);
+        }
         else{
             periodicals = periodicalService.findAll();
         }
@@ -47,9 +61,19 @@ public class PeriodicalController {
         return periodicalService.findById(id);
     }
 
-    @GetMapping("/periodical/search")
+    @GetMapping("/periodical/searchByTitle")
     public List<Periodical>searchByTitle(@PathParam("title") String title) {
         return periodicalService.searchByTitle(title);
+    }
+
+    @GetMapping("/periodical/searchByGenre")
+    public List<Periodical>searchByGenre(@PathParam("genre") Genre genre) {
+        return periodicalService.searchByGenre(genre);
+    }
+
+    @GetMapping("/periodical/searchByAuthor")
+    public List<Periodical>searchByAuthor(@PathParam("author") Author author) {
+        return periodicalService.searchByAuthor(author);
     }
 
 }

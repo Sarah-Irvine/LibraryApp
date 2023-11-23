@@ -1,5 +1,7 @@
 package com.Library.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,12 +21,24 @@ public class Periodical {
     @GeneratedValue
     private Integer id;
     private String title;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date publicationDate;
+    @Enumerated(EnumType.STRING)
+    private Genre genre;
 
-    public Periodical(String title, Date publicationDate){
+    public Periodical(String title, Date publicationDate, Genre genre, Author author){
         this.title = title;
         this.publicationDate = publicationDate;
+        this.genre = genre;
+        this.author = author;
     }
+
+    @Nonnull
+    @ManyToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
+    private Author author;
+
+
 
     /*
     Noting here incase needed later:
