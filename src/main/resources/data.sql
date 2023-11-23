@@ -4,3 +4,7 @@ insert into Librarian (address_id,id,name,phone_number) values (1,1, 'Sarah','12
 insert into LIBRARY_User (address_id,id,name,phone_number) values (2,2, 'Zaggy','987654321');
 insert into Author (id,name) values (1,'Sarah Irvine');
 insert into Periodical (id,title,publication_date,genre,author_id) values (1, 'The Banach Tarski Paradox','2018-06-27','MATHS',1);
+insert into Director (id,name) values (1,'Richard Curtis');
+insert into Movie (id,title,genre,director_id) values (1,'Love Actually','ROMCOM',1);
+insert into Author (id,name) values (2,'A. A. Milne');
+insert into Book (id,title,genre,author_id) values (1,'Winnie The Pooh','STORYBOOK',2);

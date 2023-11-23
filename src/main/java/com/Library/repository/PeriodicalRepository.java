@@ -7,9 +7,11 @@ import com.Library.model.Periodical;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface PeriodicalRepository extends CrudRepository<Periodical,Integer> {
 
     List<Periodical> findByTitleContains(String filter);

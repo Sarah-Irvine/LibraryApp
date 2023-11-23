@@ -19,6 +19,9 @@ public class Author {
     @OneToMany(mappedBy = "author")
     private List<Periodical> periodicals;
 
+    @OneToMany(mappedBy = "author")
+    private List<Book> books;
+
     public Author(String name){
         this.name = name;
     }

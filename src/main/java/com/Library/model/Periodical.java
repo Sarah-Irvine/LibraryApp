@@ -25,6 +25,10 @@ public class Periodical {
     private Date publicationDate;
     @Enumerated(EnumType.STRING)
     private Genre genre;
+    @Nonnull
+    @ManyToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
+    private Author author;
 
     public Periodical(String title, Date publicationDate, Genre genre, Author author){
         this.title = title;
@@ -32,12 +36,6 @@ public class Periodical {
         this.genre = genre;
         this.author = author;
     }
-
-    @Nonnull
-    @ManyToOne
-    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
-    private Author author;
-
 
 
     /*

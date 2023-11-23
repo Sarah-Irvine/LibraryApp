@@ -9,10 +9,22 @@ public enum Genre {
     HISTORY,
     COOKING,
     ROMANCE,
+    MAGIC,
     TRAVEL,
     LANGUAGES,
     ACADEMIC_PAPER,
     SCIENCE,
     MATHS,
-    TECHNOLOGY
+    TECHNOLOGY,
+    ACTION,
+    ROMCOM,
+    DOCUMENTARY,
+    CHRISTMAS,
+    FAMILY,
+    KIDS,
+    TEEN,
+    CARTOON,
+    SCI_FI,
+    FAIRYTALE,
+    STORYBOOK
 }
