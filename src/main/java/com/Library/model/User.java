@@ -25,4 +25,5 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    //add manyToMany functionality here
 }
