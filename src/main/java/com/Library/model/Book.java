@@ -1,5 +1,6 @@
 package com.Library.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
@@ -24,6 +25,7 @@ public class Book {
     @Nonnull
     @ManyToOne
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference
     private Author author;
 
     public Book(String title, Genre genre, Author author){
