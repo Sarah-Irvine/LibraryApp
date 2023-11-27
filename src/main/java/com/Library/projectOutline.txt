@@ -46,3 +46,28 @@ You will determine the Genre’s for books and movies.  Possibilities include:
 • Fiction
 • Childrens
 • etc
+
+
+For presentation:
+Sonarlint bugs fixed or explained why not fixed.
+Greater than 70% test coverage
+
+POST, PUT, GET, DELETE end points
+
+
+ Multiple DSL queries using the CrudRepository interface(s)
+
+ Jenkins build for your app
+
+OneToMany
+OneToOne
+Cascade Persist
+Logging
+Demonstrated Unit Tests and Postman/Insomnia
+
+Nice to haves…
+
+ Flyway
+ ManyToMany
+
+

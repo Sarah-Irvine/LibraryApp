@@ -6,9 +6,7 @@ import com.Library.service.PeriodicalService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -71,5 +69,20 @@ public class MovieController {
     @GetMapping("/movie/searchByDirector")
     public List<Movie>searchByDirector(@PathParam("director") Director director) {
         return movieService.searchByDirector(director);
+    }
+
+    @PostMapping("/movie")
+    public Movie createMovie(@RequestBody Movie movie){
+        return movieService.save(movie);
+    }
+
+    @PutMapping("/movie")
+    public Movie updateMovie(@RequestBody Movie movie){
+        return movieService.save(movie);
+    }
+
+    @DeleteMapping("/movie")
+    public void deleteMovie(@RequestBody Movie movie){
+        movieService.delete(movie);
     }
 }

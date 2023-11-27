@@ -45,4 +45,14 @@ public class UserServiceImpl implements UserService {
     public List<User> searchByName(String name) {
         return userRepository.searchByName(name);
     }
+
+    @Override
+    public User save(User u){
+        return userRepository.save(u);
+    }
+
+    @Override
+    public void delete(User u) {
+        userRepository.delete(u);
+    }
 }

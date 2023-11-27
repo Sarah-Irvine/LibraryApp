@@ -70,7 +70,6 @@ public class PeriodicalServiceImpl implements PeriodicalService{
 
     //////////////////////////////////////////////////
 
-
     @Override
     public List<Periodical> findByAuthorContains(String filter) {
         return periodicalRepository.findByAuthorContains(filter);
@@ -84,5 +83,17 @@ public class PeriodicalServiceImpl implements PeriodicalService{
     @Override
     public List<Periodical> searchByAuthor(Author author) {
         return periodicalRepository.searchByAuthor(author);
+    }
+
+    //////////////////////////////////////////////////
+
+    @Override
+    public Periodical save(Periodical p){
+        return periodicalRepository.save(p);
+    }
+
+    @Override
+    public void delete(Periodical p) {
+        periodicalRepository.delete(p);
     }
 }

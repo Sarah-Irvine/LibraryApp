@@ -5,9 +5,7 @@ import com.Library.service.UserService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -48,6 +46,21 @@ public class UserController {
     @GetMapping("/user/search")
     public List<User>searchByName(@PathParam("name") String name) {
         return userService.searchByName(name);
+    }
+
+    @PostMapping("/user")
+    public User createUser(@RequestBody User user){
+        return userService.save(user);
+    }
+
+    @PutMapping("/user")
+    public User updateUser(@RequestBody User user){
+        return userService.save(user);
+    }
+
+    @DeleteMapping("/user")
+    public void deleteUser(@RequestBody User user){
+        userService.delete(user);
     }
 
 }

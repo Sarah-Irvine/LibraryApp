@@ -15,4 +15,8 @@ public interface UserService {
     List<User> findByNameNotContains(String notFilter);
 
     List<User> searchByName(String name);
+
+    public User save(User u);
+
+    public void delete(User u);
 }

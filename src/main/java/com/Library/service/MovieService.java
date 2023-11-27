@@ -30,4 +30,8 @@ public interface MovieService {
     List<Movie> findByDirectorNotContains(String notFilter);
 
     List<Movie> searchByDirector(Director director);
+
+    public Movie save(Movie m);
+
+    public void delete(Movie m);
 }

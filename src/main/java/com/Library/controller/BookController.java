@@ -9,9 +9,7 @@ import com.Library.service.PeriodicalService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -74,5 +72,20 @@ public class BookController {
     @GetMapping("/book/searchByAuthor")
     public List<Book>searchByAuthor(@PathParam("author") Author author) {
         return bookService.searchByAuthor(author);
+    }
+
+    @PostMapping("/book")
+    public Book createBook(@RequestBody Book book){
+        return bookService.save(book);
+    }
+
+    @PutMapping("/book")
+    public Book updateBook(@RequestBody Book book){
+        return bookService.save(book);
+    }
+
+    @DeleteMapping("/book")
+    public void deleteBook(@RequestBody Book book){
+        bookService.delete(book);
     }
 }

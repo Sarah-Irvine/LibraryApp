@@ -84,4 +84,16 @@ public class BookServiceImpl implements BookService {
     public List<Book> searchByAuthor(Author author) {
         return bookRepository.searchByAuthor(author);
     }
+
+    //////////////////////////////////////////////////
+
+    @Override
+    public Book save(Book b){
+        return bookRepository.save(b);
+    }
+
+    @Override
+    public void delete(Book b) {
+        bookRepository.delete(b);
+    }
 }
