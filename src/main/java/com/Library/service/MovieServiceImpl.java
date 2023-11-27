@@ -84,4 +84,16 @@ public class MovieServiceImpl implements MovieService{
     public List<Movie> searchByDirector(Director director) {
         return movieRepository.searchByDirector(director);
     }
+
+    //////////////////////////////////////////////////
+
+    @Override
+    public Movie save(Movie m){
+        return movieRepository.save(m);
+    }
+
+    @Override
+    public void delete(Movie m) {
+        movieRepository.delete(m);
+    }
 }

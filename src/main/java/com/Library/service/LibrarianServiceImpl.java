@@ -46,4 +46,14 @@ public class LibrarianServiceImpl implements LibrarianService {
     public List<Librarian> searchByName(String name) {
         return librarianRepository.searchByName(name);
     }
+
+    @Override
+    public Librarian save(Librarian l){
+        return librarianRepository.save(l);
+    }
+
+    @Override
+    public void delete(Librarian l) {
+        librarianRepository.delete(l);
+    }
 }

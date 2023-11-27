@@ -9,9 +9,7 @@ import com.Library.service.UserService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -74,6 +72,17 @@ public class PeriodicalController {
     @GetMapping("/periodical/searchByAuthor")
     public List<Periodical>searchByAuthor(@PathParam("author") Author author) {
         return periodicalService.searchByAuthor(author);
+    }
+
+    @PostMapping("/periodical")
+    public Periodical createPeriodical(@RequestBody Periodical periodical){ return periodicalService.save(periodical); }
+
+    @PutMapping("/periodical")
+    public Periodical updatePeriodical(@RequestBody Periodical periodical){ return periodicalService.save(periodical); }
+
+    @DeleteMapping("/periodical")
+    public void deletePeriodical(@RequestBody Periodical periodical){
+        periodicalService.delete(periodical);
     }
 
 }

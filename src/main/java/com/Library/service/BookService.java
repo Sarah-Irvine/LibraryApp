@@ -33,4 +33,8 @@ public interface BookService {
     List<Book> findByAuthorNotContains(String notFilter);
 
     List<Book> searchByAuthor(Author author);
+
+    public Book save(Book b);
+
+    public void delete(Book b);
 }

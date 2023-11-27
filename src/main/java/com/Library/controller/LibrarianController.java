@@ -7,9 +7,7 @@ import com.Library.service.UserService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -50,6 +48,21 @@ public class LibrarianController {
     @GetMapping("/librarian/search")
     public List<Librarian>searchByName(@PathParam("name") String name) {
         return librarianService.searchByName(name);
+    }
+
+    @PostMapping("/librarian")
+    public Librarian createLibrarian(@RequestBody Librarian librarian){
+        return librarianService.save(librarian);
+    }
+
+    @PutMapping("/librarian")
+    public Librarian updateLibrarian(@RequestBody Librarian librarian){
+        return librarianService.save(librarian);
+    }
+
+    @DeleteMapping("/librarian")
+    public void deleteLibrarian(@RequestBody Librarian librarian){
+        librarianService.delete(librarian);
     }
 
 

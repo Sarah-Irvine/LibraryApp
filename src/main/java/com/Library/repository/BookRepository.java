@@ -20,7 +20,6 @@ public interface BookRepository extends CrudRepository<Book,Integer> {
             "FROM Book b WHERE b.title LIKE %:title%")
     List<Book> searchByTitle(@Param("title") String title);
 
-
     List<Book> findByGenreContains(String filter);
 
     List<Book> findByGenreNotContains(String notFilter);

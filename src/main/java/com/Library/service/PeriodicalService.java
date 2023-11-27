@@ -32,4 +32,8 @@ public interface PeriodicalService {
     List<Periodical> findByAuthorNotContains(String notFilter);
 
     List<Periodical> searchByAuthor(Author author);
+
+    public Periodical save(Periodical p);
+
+    public void delete(Periodical p);
 }
