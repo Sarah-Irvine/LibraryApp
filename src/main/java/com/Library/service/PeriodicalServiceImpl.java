@@ -46,10 +46,6 @@ public class PeriodicalServiceImpl implements PeriodicalService{
         return periodicalRepository.findByTitleNotContains(notFilter);
     }
 
-    @Override
-    public List<Periodical> searchByTitle(String title) {
-        return periodicalRepository.searchByTitle(title);
-    }
 
     //////////////////////////////////////////////////
 
@@ -63,27 +59,19 @@ public class PeriodicalServiceImpl implements PeriodicalService{
         return periodicalRepository.findByGenreNotContains(notFilter);
     }
 
-    @Override
-    public List<Periodical> searchByGenre(Genre genre) {
-        return periodicalRepository.searchByGenre(genre);
-    }
 
     //////////////////////////////////////////////////
 
     @Override
     public List<Periodical> findByAuthorContains(String filter) {
-        return periodicalRepository.findByAuthorContains(filter);
+        return periodicalRepository.findByAuthorNameContains(filter);
     }
 
     @Override
     public List<Periodical> findByAuthorNotContains(String notFilter) {
-        return periodicalRepository.findByAuthorNotContains(notFilter);
+        return periodicalRepository.findByAuthorNameNotContains(notFilter);
     }
 
-    @Override
-    public List<Periodical> searchByAuthor(Author author) {
-        return periodicalRepository.searchByAuthor(author);
-    }
 
     //////////////////////////////////////////////////
 

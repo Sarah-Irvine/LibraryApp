@@ -22,30 +22,9 @@ public class MovieController {
     }
 
     @GetMapping("/movies")
-    public List<Movie> getMovies(@PathParam("filter") String filter,
-                                           @PathParam("notFilter") String notFilter){
-        List<Movie> movies = Collections.emptyList();
-        if(StringUtils.isNotBlank(filter)){
-            movies = movieService.findByTitleContains(filter);
-        }
-        else if(StringUtils.isNotBlank(notFilter)){
-            movies = movieService.findByTitleNotContains(notFilter);
-        }
-        else if(StringUtils.isNotBlank(filter)){
-            movies = movieService.findByGenreContains(filter);
-        }
-        else if(StringUtils.isNotBlank(notFilter)){
-            movies = movieService.findByGenreNotContains(notFilter);
-        }
-        else if(StringUtils.isNotBlank(filter)){
-            movies = movieService.findByDirectorContains(filter);
-        }
-        else if(StringUtils.isNotBlank(notFilter)){
-            movies = movieService.findByDirectorNotContains(notFilter);
-        }
-        else{
-            movies = movieService.findAll();
-        }
+    public List<Movie> getMovies(){
+        List<Movie> movies;
+        movies = movieService.findAll();
         log.debug("In the getMovies Movie method");
         return movies;
     }
@@ -57,18 +36,42 @@ public class MovieController {
     }
 
     @GetMapping("/movie/searchByTitle")
-    public List<Movie>searchByTitle(@PathParam("title") String title) {
-        return movieService.searchByTitle(title);
+    public List<Movie>searchByTitle(@PathParam("title") String title,
+                                    @PathParam("notFilter") String notFilter) {
+        List<Movie> movies;
+        if(StringUtils.isNotBlank(notFilter)){
+            movies = movieService.findByTitleNotContains(title);
+        }
+        else{
+            movies = movieService.findByTitleContains(title);
+        }
+        return movies;
     }
 
     @GetMapping("/movie/searchByGenre")
-    public List<Movie>searchByGenre(@PathParam("genre") Genre genre) {
-        return movieService.searchByGenre(genre);
+    public List<Movie>searchByGenre(@PathParam("genre") String genre,
+                                    @PathParam("notFilter") String notFilter) {
+        List<Movie> movies;
+        if(StringUtils.isNotBlank(notFilter)){
+            movies = movieService.findByGenreNotContains(genre);
+        }
+        else{
+            movies = movieService.findByGenreContains(genre);
+        }
+        return movies;
     }
 
     @GetMapping("/movie/searchByDirector")
-    public List<Movie>searchByDirector(@PathParam("director") Director director) {
-        return movieService.searchByDirector(director);
+    public List<Movie>searchByDirector(@PathParam("director") String director,
+                                       @PathParam("notFilter") String notFilter) {
+        List<Movie> movies;
+        if(StringUtils.isNotBlank(notFilter)){
+            movies = movieService.findByDirectorNotContains(director);
+        }
+        else{
+            movies = movieService.findByDirectorContains(director);
+        }
+        return movies;
     }
 
     @PostMapping("/movie")

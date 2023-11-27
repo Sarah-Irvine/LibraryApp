@@ -1,5 +1,6 @@
 package com.Library.controller;
 
+import com.Library.model.Book;
 import com.Library.model.User;
 import com.Library.service.UserService;
 import io.micrometer.common.util.StringUtils;
@@ -21,18 +22,9 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public List<User> getUsers(@PathParam("filter") String filter,
-                                  @PathParam("notFilter") String notFilter){
-        List<User> users = Collections.emptyList();
-        if(StringUtils.isNotBlank(filter)){
-            users = userService.findByNameContains(filter);
-        }
-        else if(StringUtils.isNotBlank(notFilter)){
-            users = userService.findByNameNotContains(notFilter);
-        }
-        else{
-            users = userService.findAll();
-        }
+    public List<User> getUsers(){
+        List<User> users;
+        users = userService.findAll();
         log.debug("In the getUsers Users method");
         return users;
     }
@@ -44,8 +36,16 @@ public class UserController {
     }
 
     @GetMapping("/user/search")
-    public List<User>searchByName(@PathParam("name") String name) {
-        return userService.searchByName(name);
+    public List<User>searchByName(@PathParam("name") String name,
+                                  @PathParam("notFilter") String notFilter) {
+        List<User> users;
+        if(StringUtils.isNotBlank(notFilter)){
+            users = userService.findByNameNotContains(name);
+        }
+        else{
+            users = userService.findByNameContains(name);
+        }
+        return users;
     }
 
     @PostMapping("/user")

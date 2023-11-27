@@ -18,26 +18,12 @@ public interface PeriodicalRepository extends CrudRepository<Periodical,Integer>
 
     List<Periodical> findByTitleNotContains(String notFilter);
 
-    @Query("SELECT new Periodical(p.title, p.publicationDate, p.genre, p.author) " +
-            "FROM Periodical p WHERE p.title LIKE %:title%")
-    List<Periodical> searchByTitle(@Param("title") String title);
-
-
     List<Periodical> findByGenreContains(String filter);
 
     List<Periodical> findByGenreNotContains(String notFilter);
 
-    @Query("SELECT new Periodical(p.title, p.publicationDate, p.genre, p.author) " +
-            "FROM Periodical p WHERE p.genre LIKE %:genre%")
-    List<Periodical> searchByGenre(@Param("genre") Genre genre);
+    List<Periodical> findByAuthorNameContains(String filter);
 
-
-    List<Periodical> findByAuthorContains(String filter);
-
-    List<Periodical> findByAuthorNotContains(String notFilter);
-
-    @Query("SELECT new Periodical(p.title, p.publicationDate, p.genre, p.author) " +
-            "FROM Periodical p WHERE p.author LIKE %:author%")
-    List<Periodical> searchByAuthor(@Param("author") Author author);
+    List<Periodical> findByAuthorNameNotContains(String notFilter);
 
 }

@@ -46,11 +46,6 @@ public class MovieServiceImpl implements MovieService{
         return movieRepository.findByTitleNotContains(notFilter);
     }
 
-    @Override
-    public List<Movie> searchByTitle(String title) {
-        return movieRepository.searchByTitle(title);
-    }
-
     //////////////////////////////////////////////////
 
     @Override
@@ -63,27 +58,19 @@ public class MovieServiceImpl implements MovieService{
         return movieRepository.findByGenreNotContains(notFilter);
     }
 
-    @Override
-    public List<Movie> searchByGenre(Genre genre) {
-        return movieRepository.searchByGenre(genre);
-    }
 
     //////////////////////////////////////////////////
 
     @Override
     public List<Movie> findByDirectorContains(String filter) {
-        return movieRepository.findByDirectorContains(filter);
+        return movieRepository.findByDirectorNameContains(filter);
     }
 
     @Override
     public List<Movie> findByDirectorNotContains(String notFilter) {
-        return movieRepository.findByDirectorNotContains(notFilter);
+        return movieRepository.findByDirectorNameNotContains(notFilter);
     }
 
-    @Override
-    public List<Movie> searchByDirector(Director director) {
-        return movieRepository.searchByDirector(director);
-    }
 
     //////////////////////////////////////////////////
 

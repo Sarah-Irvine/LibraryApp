@@ -46,43 +46,27 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findByTitleNotContains(notFilter);
     }
 
-    @Override
-    public List<Book> searchByTitle(String title) {
-        return bookRepository.searchByTitle(title);
-    }
 
     //////////////////////////////////////////////////
 
     @Override
-    public List<Book> findByGenreContains(String filter) {
-        return bookRepository.findByGenreContains(filter);
-    }
+    public List<Book> findByGenreContains(String filter) {return bookRepository.findByGenreContains(filter);}
 
     @Override
     public List<Book> findByGenreNotContains(String notFilter) {
         return bookRepository.findByGenreNotContains(notFilter);
     }
 
-    @Override
-    public List<Book> searchByGenre(Genre genre) {
-        return bookRepository.searchByGenre(genre);
-    }
-
     //////////////////////////////////////////////////
 
     @Override
     public List<Book> findByAuthorContains(String filter) {
-        return bookRepository.findByAuthorContains(filter);
+        return bookRepository.findByAuthorNameContains(filter);
     }
 
     @Override
     public List<Book> findByAuthorNotContains(String notFilter) {
-        return bookRepository.findByAuthorNotContains(notFilter);
-    }
-
-    @Override
-    public List<Book> searchByAuthor(Author author) {
-        return bookRepository.searchByAuthor(author);
+        return bookRepository.findByAuthorNameNotContains(notFilter);
     }
 
     //////////////////////////////////////////////////

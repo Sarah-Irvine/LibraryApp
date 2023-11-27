@@ -25,30 +25,9 @@ public class BookController {
     }
 
     @GetMapping("/books")
-    public List<Book> getBooks(@PathParam("filter") String filter,
-                               @PathParam("notFilter") String notFilter){
-        List<Book> books = Collections.emptyList();
-        if(StringUtils.isNotBlank(filter)){
-            books = bookService.findByTitleContains(filter);
-        }
-        else if(StringUtils.isNotBlank(notFilter)){
-            books = bookService.findByTitleNotContains(notFilter);
-        }
-        else if(StringUtils.isNotBlank(filter)){
-            books = bookService.findByGenreContains(filter);
-        }
-        else if(StringUtils.isNotBlank(notFilter)){
-            books = bookService.findByGenreNotContains(notFilter);
-        }
-        else if(StringUtils.isNotBlank(filter)){
-            books = bookService.findByAuthorContains(filter);
-        }
-        else if(StringUtils.isNotBlank(notFilter)){
-            books = bookService.findByAuthorNotContains(notFilter);
-        }
-        else{
-            books = bookService.findAll();
-        }
+    public List<Book> getBooks(){
+        List<Book> books;
+        books = bookService.findAll();
         log.debug("In the getBooks Book method");
         return books;
     }
@@ -60,18 +39,42 @@ public class BookController {
     }
 
     @GetMapping("/book/searchByTitle")
-    public List<Book>searchByTitle(@PathParam("title") String title) {
-        return bookService.searchByTitle(title);
+    public List<Book>searchByTitle(@PathParam("title") String title,
+                                   @PathParam("notFilter") String notFilter) {
+        List<Book> books;
+        if(StringUtils.isNotBlank(notFilter)){
+            books = bookService.findByTitleNotContains(title);
+        }
+        else{
+            books = bookService.findByTitleContains(title);
+        }
+        return books;
     }
 
     @GetMapping("/book/searchByGenre")
-    public List<Book>searchByGenre(@PathParam("genre") Genre genre) {
-        return bookService.searchByGenre(genre);
+    public List<Book>searchByGenre(@PathParam("genre") String genre,
+                                   @PathParam("notFilter") String notFilter) {
+        List<Book> books;
+        if(StringUtils.isNotBlank(notFilter)){
+            books = bookService.findByGenreNotContains(genre);
+        }
+        else{
+            books = bookService.findByGenreContains(genre);
+        }
+        return books;
     }
 
     @GetMapping("/book/searchByAuthor")
-    public List<Book>searchByAuthor(@PathParam("author") Author author) {
-        return bookService.searchByAuthor(author);
+    public List<Book>searchByAuthor(@PathParam("author") String author,
+                                    @PathParam("notFilter") String notFilter) {
+        List<Book> books;
+        if(StringUtils.isNotBlank(notFilter)){
+            books = bookService.findByAuthorNotContains(author);
+        }
+        else{
+            books = bookService.findByAuthorContains(author);
+        }
+        return books;
     }
 
     @PostMapping("/book")

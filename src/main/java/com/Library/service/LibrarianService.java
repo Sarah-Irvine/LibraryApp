@@ -15,8 +15,6 @@ public interface LibrarianService {
 
     List<Librarian> findByNameNotContains(String notFilter);
 
-    List<Librarian> searchByName(String name);
-
     public Librarian save(Librarian l);
 
     public void delete(Librarian l);

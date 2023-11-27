@@ -16,24 +16,12 @@ public interface BookRepository extends CrudRepository<Book,Integer> {
 
     List<Book> findByTitleNotContains(String notFilter);
 
-    @Query("SELECT new Book(b.title, b.genre, b.author) " +
-            "FROM Book b WHERE b.title LIKE %:title%")
-    List<Book> searchByTitle(@Param("title") String title);
-
     List<Book> findByGenreContains(String filter);
 
     List<Book> findByGenreNotContains(String notFilter);
 
-    @Query("SELECT new Book(b.title, b.genre, b.author) " +
-            "FROM Book b WHERE b.genre LIKE %:genre%")
-    List<Book> searchByGenre(@Param("genre") Genre genre);
+    List<Book> findByAuthorNameContains(String filter);
 
+    List<Book> findByAuthorNameNotContains(String notFilter);
 
-    List<Book> findByAuthorContains(String filter);
-
-    List<Book> findByAuthorNotContains(String notFilter);
-
-    @Query("SELECT new Book(b.title, b.genre, b.author) " +
-            "FROM Book b WHERE b.author LIKE %:author%")
-    List<Book> searchByAuthor(@Param("author") Author author);
 }

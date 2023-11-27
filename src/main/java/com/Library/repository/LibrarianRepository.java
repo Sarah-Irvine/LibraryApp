@@ -16,8 +16,4 @@ public interface LibrarianRepository extends CrudRepository<Librarian,Integer> {
 
     List<Librarian> findByNameNotContains(String notFilter);
 
-    @Query("SELECT new Librarian(l.name, l.phoneNumber) " +
-            "FROM Librarian l WHERE l.name LIKE %:name%")
-    List<Librarian> searchByName(@Param("name") String name);
-
 }

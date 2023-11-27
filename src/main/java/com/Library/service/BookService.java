@@ -13,26 +13,17 @@ public interface BookService {
 
     Book findById(int id);
 
-
     List<Book> findByTitleContains(String filter);
 
     List<Book> findByTitleNotContains(String notFilter);
-
-    List<Book> searchByTitle(String title);
-
 
     List<Book> findByGenreContains(String filter);
 
     List<Book> findByGenreNotContains(String notFilter);
 
-    List<Book> searchByGenre(Genre genre);
-
-
     List<Book> findByAuthorContains(String filter);
 
     List<Book> findByAuthorNotContains(String notFilter);
-
-    List<Book> searchByAuthor(Author author);
 
     public Book save(Book b);
 

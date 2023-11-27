@@ -70,4 +70,11 @@ Nice to haves…
  Flyway
  ManyToMany
 
+http://localhost:8080/book/searchByTitle?title=Winnie&notFilter=true
+
+Projection example:
+@Query("SELECT new Book(b.title, b.genre, b.author) " +
+            "FROM Book b WHERE b.genre LIKE %:genre%")
+    List<Book> searchByGenre(@Param("genre") Genre genre);
+
 

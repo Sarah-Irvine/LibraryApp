@@ -15,7 +15,4 @@ public interface UserRepository extends CrudRepository<User,Integer> {
 
     List<User> findByNameNotContains(String notFilter);
 
-    @Query("SELECT new User(u.name, u.phoneNumber) " +
-            "FROM User u WHERE u.name LIKE %:name%")
-    List<User> searchByName(@Param("name") String name);
 }

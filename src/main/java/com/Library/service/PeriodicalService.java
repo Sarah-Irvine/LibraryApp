@@ -17,21 +17,13 @@ public interface PeriodicalService {
 
     List<Periodical> findByTitleNotContains(String notFilter);
 
-    List<Periodical> searchByTitle(String title);
-
-
     List<Periodical> findByGenreContains(String filter);
 
     List<Periodical> findByGenreNotContains(String notFilter);
 
-    List<Periodical> searchByGenre(Genre genre);
-
-
     List<Periodical> findByAuthorContains(String filter);
 
     List<Periodical> findByAuthorNotContains(String notFilter);
-
-    List<Periodical> searchByAuthor(Author author);
 
     public Periodical save(Periodical p);
 

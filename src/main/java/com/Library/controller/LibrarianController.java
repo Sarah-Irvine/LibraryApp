@@ -23,18 +23,9 @@ public class LibrarianController {
     }
 
     @GetMapping("/librarians")
-    public List<Librarian> getLibrarians(@PathParam("filter") String filter,
-                               @PathParam("notFilter") String notFilter){
-        List<Librarian> librarians = Collections.emptyList();
-        if(StringUtils.isNotBlank(filter)){
-            librarians = librarianService.findByNameContains(filter);
-        }
-        else if(StringUtils.isNotBlank(notFilter)){
-            librarians = librarianService.findByNameNotContains(notFilter);
-        }
-        else{
-            librarians = librarianService.findAll();
-        }
+    public List<Librarian> getLibrarians(){
+        List<Librarian> librarians;
+        librarians = librarianService.findAll();
         log.debug("In the getLibrarians Librarian method");
         return librarians;
     }
@@ -46,8 +37,16 @@ public class LibrarianController {
     }
 
     @GetMapping("/librarian/search")
-    public List<Librarian>searchByName(@PathParam("name") String name) {
-        return librarianService.searchByName(name);
+    public List<Librarian>searchByName(@PathParam("name") String name,
+                                       @PathParam("notFilter") String notFilter) {
+        List<Librarian> librarians;
+        if(StringUtils.isNotBlank(notFilter)){
+            librarians = librarianService.findByNameNotContains(name);
+        }
+        else{
+            librarians = librarianService.findByNameContains(name);
+        }
+        return librarians;
     }
 
     @PostMapping("/librarian")
