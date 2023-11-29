@@ -23,7 +23,7 @@ public class Director {
     private String name;
 
     @OneToMany(mappedBy = "director")
-    //@JsonManagedReference
+    @JsonManagedReference
     private List<Movie> movies;
 
     public Director(String name){

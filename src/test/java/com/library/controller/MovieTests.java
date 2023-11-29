@@ -39,7 +39,7 @@ public class MovieTests {
 
     ResultActions resultActions;
 
-    //@Test
+    @Test
     public void testGettingAllMovies() throws Exception{
         int expectedLength = 4;
 

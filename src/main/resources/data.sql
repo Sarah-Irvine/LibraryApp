@@ -9,7 +9,7 @@ insert into Librarian (address_id,id,name,phone_number) values (200,200, 'Vaila'
 insert into Librarian (address_id,id,name,phone_number) values (600,300, 'Iona','678923465');
 insert into LIBRARY_User (address_id,id,name,phone_number) values (300,400, 'Zaggy','987654321');
 insert into LIBRARY_User (address_id,id,name,phone_number) values (400,500, 'Caspian','2346735773');
-insert into LIBRARY_User (address_id,id,name,phone_number) values (500,600, 'Fred','6538935544');
+insert into LIBRARY_User (address_id,id,name,phone_number) values (500,600, 'Sarah','6538935544');
 insert into Author (id,name) values (100,'Sarah Irvine');
 insert into Author (id,name) values (200,'A. A. Milne');
 insert into Author (id,name) values (300,'Hans Christian Andersen');
@@ -32,3 +32,9 @@ insert into Book (id,title,genre,author_id) values (200,'The Little Mermaid','FA
 insert into Book (id,title,genre,author_id) values (300,'Where the Crawdads Sing','NOVEL',400);
 insert into Book (id,title,genre,author_id) values (400,'Lessons in Chemistry','NOVEL',500);
 insert into Book (id,title,genre,author_id) values (500,'The Midnight Library','FANTASY',600);
+insert into user_book (user_id, book_id) values (400,200);
+insert into user_book (user_id, book_id) values (400,300);
+insert into user_book (user_id, book_id) values (400,400);
+insert into user_book (user_id, book_id) values (500,200);
+insert into user_book (user_id, book_id) values (500,100);
+insert into user_book (user_id, book_id) values (600,500);
