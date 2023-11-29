@@ -1,42 +1,39 @@
 package com.library.dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.library.model.Author;
 import com.library.model.Genre;
-import com.library.model.User;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.List;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
-public class BookDto {
+public class PeriodicalDto {
 
     private Integer id;
     private String title;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date publicationDate;
 
     private Genre genre;
 
     private Author author;
 
-    private AuthorDto authorName;
-
-    private List<UserDto> libraryUsers;
-
-    public BookDto (){
+    public PeriodicalDto (){
 
     }
 
-    public BookDto(Integer id, String title, Genre genre, AuthorDto authorName,List<UserDto> libraryUsers){
-        this.id = id;
+    public PeriodicalDto(String title, Date publicationDate, Genre genre, Author author){
         this.title = title;
+        this.publicationDate = publicationDate;
         this.genre = genre;
-        this.authorName = authorName;
-        this.libraryUsers = libraryUsers;
+        this.author = author;
     }
 
 }

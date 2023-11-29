@@ -29,7 +29,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book findById(int id) {
         Optional<Book> book = bookRepository.findById(id);
-        return book.orElseGet(() -> new Book("Book does not exist",null,null));
+        return book.orElseGet(() -> new Book("Book does not exist",null));
     }
 
     //////////////////////////////////////////////////

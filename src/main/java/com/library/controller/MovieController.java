@@ -1,23 +1,28 @@
 package com.library.controller;
 
+import com.library.dto.MovieDto;
 import com.library.model.*;
+import com.library.repository.MovieRepository;
 import com.library.service.MovieService;
+import com.library.util.MovieDtoConverter;
 import io.micrometer.common.util.StringUtils;
 import jakarta.websocket.server.PathParam;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
+@Data
 @Slf4j
 public class MovieController {
 
     private final MovieService movieService;
 
-    public MovieController(MovieService movieService){
-        this.movieService = movieService;
-    }
+    private MovieRepository movieRepository;
 
     @GetMapping("/movies")
     public List<Movie> getMovies(){
@@ -28,9 +33,10 @@ public class MovieController {
     }
 
     @GetMapping("/movies/{id}")
-    public Movie getMovie(@PathVariable int id){
+    public MovieDto getMovieById(@PathVariable("id") int id){
         log.debug("In the getMovie Movie method: " + id);
-        return movieService.findById(id);
+        Movie movie = movieRepository.findById(id).orElseGet(Movie::new);
+        return MovieDtoConverter.convert(movie);
     }
 
     @GetMapping("/movie/searchByTitle")

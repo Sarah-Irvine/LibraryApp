@@ -33,13 +33,11 @@ public class Book {
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
     @JsonBackReference
-    //@JsonIgnore
     private Author author;
 
-    public Book(String title, Genre genre, Author author){
+    public Book(String title, Genre genre){
         this.title = title;
         this.genre = genre;
-        this.author = author;
     }
 
     @ManyToMany(cascade = CascadeType.PERSIST)
