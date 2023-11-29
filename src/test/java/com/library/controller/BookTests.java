@@ -36,7 +36,7 @@ public class BookTests {
 
     ResultActions resultActions;
 
-    //@Test
+    @Test
     public void testGettingAllBooks() throws Exception{
         int expectedLength = 5;
 

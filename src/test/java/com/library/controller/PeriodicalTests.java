@@ -40,7 +40,7 @@ public class PeriodicalTests {
 
     ResultActions resultActions;
 
-    //@Test
+    @Test
     public void testGettingAllPeriodicals() throws Exception{
         int expectedLength = 3;
 

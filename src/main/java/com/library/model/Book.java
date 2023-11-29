@@ -8,11 +8,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Book {
 
     @Id
@@ -24,7 +29,7 @@ public class Book {
     @Nonnull
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
-    //@JsonBackReference
+    @JsonBackReference
     //@JsonIgnore
     private Author author;
 
@@ -33,5 +38,11 @@ public class Book {
         this.genre = genre;
         this.author = author;
     }
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name="user_book",
+            joinColumns = @JoinColumn(name="book_id"),
+            inverseJoinColumns = @JoinColumn(name="user_id"))
+    private List<User> libraryUsers;
 
 }

@@ -22,7 +22,7 @@ public class Movie {
     @Nonnull
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "director_id", referencedColumnName = "id", nullable = false)
-    //@JsonBackReference
+    @JsonBackReference
     private Director director;
 
     public Movie(String title, Genre genre, Director director){
