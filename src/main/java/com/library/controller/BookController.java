@@ -1,23 +1,28 @@
 package com.library.controller;
 
+import com.library.dto.BookDto;
+import com.library.util.BookDtoConverter;
 import com.library.model.Book;
+import com.library.repository.BookRepository;
 import com.library.service.BookService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.websocket.server.PathParam;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
+@Data
 @Slf4j
 public class BookController {
 
     private final BookService bookService;
 
-    public BookController(BookService bookService){
-        this.bookService = bookService;
-    }
+    private BookRepository bookRepository;
 
     @GetMapping("/books")
     public List<Book> getBooks(){
@@ -28,9 +33,10 @@ public class BookController {
     }
 
     @GetMapping("/books/{id}")
-    public Book getBook(@PathVariable int id){
+    public BookDto getBookById(@PathVariable("id") int id){
         log.debug("In the getBook Books method: " + id);
-        return bookService.findById(id);
+        Book book = bookRepository.findById(id).orElseGet(Book::new);
+        return BookDtoConverter.convert(book);
     }
 
     @GetMapping("/book/searchByTitle")

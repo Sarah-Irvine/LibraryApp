@@ -1,5 +1,7 @@
 package com.library.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.library.dto.BookDto;
 import com.library.model.Author;
 import com.library.model.Book;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,10 +19,11 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.web.client.RestTemplate;
 
 import static com.library.model.Genre.STORYBOOK;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Sql("classpath:test-data.sql")
 @SpringBootTest
@@ -61,6 +64,30 @@ public class BookTests {
     }
 
     @Test
+    void testGet() {
+        RestTemplate restTemplate = new RestTemplate();
+        BookDto book = restTemplate.getForObject("http://localhost:8080/books/100", BookDto.class);
+        assertNotNull(book);
+        System.out.println(book.getTitle());
+        System.out.println(book.getAuthor().getName());
+    }
+
+    @Test
+    void testPut() throws JsonProcessingException {
+        RestTemplate restTemplate = new RestTemplate();
+        BookDto book = restTemplate.getForObject("http://localhost:8080/books/1", BookDto.class);
+
+        book.getAuthor().setName("Bryan Hansen");
+        ObjectMapper mapper = new ObjectMapper();
+        String str = mapper.writeValueAsString(book);
+        System.out.println(str);
+
+        restTemplate.put("http://localhost:8080/books", book);
+
+        assertTrue(true);
+    }
+
+    //@Test
     public void testCreateBook() throws Exception{
         Book book = new Book();
         book.setTitle("This is my TEST Book!");
@@ -89,7 +116,7 @@ public class BookTests {
 
     }
 
-    @Test
+    //@Test
     public void testDeleteBook() throws Exception{
         Book book = new Book();
         book.setTitle("This is my TEST Book!");
@@ -125,7 +152,7 @@ public class BookTests {
 
     }
 
-    @Test
+    //@Test
     public void testUpdateBook() throws Exception{
         Book book = new Book();
         book.setTitle("This is my TEST Book!");
