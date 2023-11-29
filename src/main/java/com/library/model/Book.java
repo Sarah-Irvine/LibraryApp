@@ -15,17 +15,20 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+        property = "id")*/
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Book {
 
     @Id
     @GeneratedValue
     private Integer id;
     private String title;
+
     @Enumerated(EnumType.STRING)
     private Genre genre;
+
     @Nonnull
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
@@ -43,6 +46,7 @@ public class Book {
     @JoinTable(name="user_book",
             joinColumns = @JoinColumn(name="book_id"),
             inverseJoinColumns = @JoinColumn(name="user_id"))
+    @JsonBackReference
     private List<User> libraryUsers;
 
 }

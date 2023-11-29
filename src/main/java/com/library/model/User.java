@@ -15,9 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+        property = "id")*/
 public class User {
 
     @Id
@@ -38,5 +38,6 @@ public class User {
     @JoinTable(name="user_book",
     joinColumns = @JoinColumn(name="user_id"),
     inverseJoinColumns = @JoinColumn(name="book_id"))
+    @JsonManagedReference
     private List<Book> booksBorrowed;
 }
