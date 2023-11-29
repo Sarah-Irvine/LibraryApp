@@ -5,7 +5,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class AuthorDto {
+public class DirectorDto {
 
     private String name;
+
 }

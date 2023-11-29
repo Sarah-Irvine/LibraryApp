@@ -18,7 +18,9 @@ public class BookDtoConverter {
         for (User user: libraryUsers) {
             libraryUserDtos.add(new UserDto(user.getName()));
         }
-        return new BookDto(book.getId(), book.getTitle(), book.getGenre(), book.getAuthor(), libraryUserDtos);
+        Author author = book.getAuthor();
+        AuthorDto authorDto = new AuthorDto(author.getName());
+        return new BookDto(book.getId(), book.getTitle(), book.getGenre(), authorDto, libraryUserDtos);
     }
 
 }

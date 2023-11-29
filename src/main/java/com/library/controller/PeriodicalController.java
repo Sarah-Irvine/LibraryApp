@@ -1,23 +1,28 @@
 package com.library.controller;
 
+import com.library.dto.PeriodicalDto;
 import com.library.model.*;
+import com.library.repository.PeriodicalRepository;
 import com.library.service.PeriodicalService;
+import com.library.util.PeriodicalDtoConverter;
 import io.micrometer.common.util.StringUtils;
 import jakarta.websocket.server.PathParam;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
+@Data
 @Slf4j
 public class PeriodicalController {
 
     private final PeriodicalService periodicalService;
 
-    public PeriodicalController(PeriodicalService periodicalService){
-        this.periodicalService = periodicalService;
-    }
+    private PeriodicalRepository periodicalRepository;
 
     @GetMapping("/periodicals")
     public List<Periodical> getPeriodicals(){
@@ -28,9 +33,10 @@ public class PeriodicalController {
     }
 
     @GetMapping("/periodicals/{id}")
-    public Periodical getPeriodical(@PathVariable int id){
+    public PeriodicalDto getPeriodicalById(@PathVariable("id") int id){
         log.debug("In the getPeriodical Periodicals method: " + id);
-        return periodicalService.findById(id);
+        Periodical periodical = periodicalRepository.findById(id).orElseGet(Periodical::new);
+        return PeriodicalDtoConverter.convert(periodical);
     }
 
     @GetMapping("/periodical/searchByTitle")
