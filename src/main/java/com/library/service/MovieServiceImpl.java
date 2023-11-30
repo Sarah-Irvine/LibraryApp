@@ -28,7 +28,7 @@ public class MovieServiceImpl implements MovieService{
     @Override
     public Movie findById(int id) {
         Optional<Movie> movie = movieRepository.findById(id);
-        return movie.orElseGet(() -> new Movie("Movie does not exist",null, null));
+        return movie.orElseGet(() -> new Movie("Movie does not exist",null));
     }
 
     //////////////////////////////////////////////////

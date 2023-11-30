@@ -15,9 +15,6 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-/*@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")*/
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Book {
 
@@ -29,11 +26,11 @@ public class Book {
     @Enumerated(EnumType.STRING)
     private Genre genre;
 
-    @Nonnull
+    //@Nonnull
     @ManyToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = true)
     @JsonBackReference(value = "author-books")
-    private Author author;
+    @JsonProperty private Author author;
 
     public Book(String title, Genre genre){
         this.title = title;

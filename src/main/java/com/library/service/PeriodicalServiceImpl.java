@@ -28,7 +28,7 @@ public class PeriodicalServiceImpl implements PeriodicalService{
     @Override
     public Periodical findById(int id) {
         Optional<Periodical> periodical = periodicalRepository.findById(id);
-        return periodical.orElseGet(() -> new Periodical("Periodical does not exist",null, null,null));
+        return periodical.orElseGet(() -> new Periodical("Periodical does not exist",null, null));
     }
 
     //////////////////////////////////////////////////

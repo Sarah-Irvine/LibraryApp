@@ -29,8 +29,6 @@ public class Author {
     @JsonManagedReference(value = "author-periodicals")
     private List<Periodical> periodicals;
 
-    //@JsonSerialize(using = BookSerializer.class)
-    //@JsonDeserialize(using = BookDeserializer.class)
     @OneToMany(mappedBy = "author")
     @JsonManagedReference(value = "author-books")
     private List<Book> books;
