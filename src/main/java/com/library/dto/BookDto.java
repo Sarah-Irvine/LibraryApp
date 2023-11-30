@@ -18,7 +18,7 @@ public class BookDto {
 
     private Genre genre;
 
-    @JsonProperty("Author Name")
+    @JsonProperty("authorName")
     private AuthorDto authorDto;
 
     private List<UserNameDto> libraryUsers;
