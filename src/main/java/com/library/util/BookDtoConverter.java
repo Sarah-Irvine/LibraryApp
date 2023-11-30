@@ -2,8 +2,7 @@ package com.library.util;
 
 import com.library.dto.AuthorDto;
 import com.library.dto.BookDto;
-import com.library.dto.GenreDto;
-import com.library.dto.UserDto;
+import com.library.dto.UserNameDto;
 import com.library.model.Author;
 import com.library.model.Book;
 import com.library.model.User;
@@ -15,9 +14,9 @@ public class BookDtoConverter {
 
     public static BookDto convert(Book book) {
         List<User> libraryUsers = book.getLibraryUsers();
-        List<UserDto> libraryUserDtos = new ArrayList<>();
+        List<UserNameDto> libraryUserDtos = new ArrayList<>();
         for (User user: libraryUsers) {
-            libraryUserDtos.add(new UserDto(user.getName()));
+            libraryUserDtos.add(new UserNameDto(user.getName()));
         }
         Author author = book.getAuthor();
         AuthorDto authorDto = new AuthorDto(author.getName());
