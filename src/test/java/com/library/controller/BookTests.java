@@ -73,21 +73,6 @@ public class BookTests {
     }
 
     @Test
-    void testPut() throws JsonProcessingException {
-        RestTemplate restTemplate = new RestTemplate();
-        BookDto book = restTemplate.getForObject("http://localhost:8080/book", BookDto.class);
-
-        book.setTitle("Pooh bear");
-        ObjectMapper mapper = new ObjectMapper();
-        String str = mapper.writeValueAsString(book);
-        System.out.println(str);
-
-        restTemplate.put("http://localhost:8080/books", book);
-
-        assertTrue(true);
-    }
-
-    //@Test
     public void testCreateBook() throws Exception{
         Book book = new Book();
         book.setTitle("This is my TEST Book!");
@@ -116,7 +101,7 @@ public class BookTests {
 
     }
 
-    //@Test
+    @Test
     public void testDeleteBook() throws Exception{
         Book book = new Book();
         book.setTitle("This is my TEST Book!");
@@ -152,7 +137,7 @@ public class BookTests {
 
     }
 
-    //@Test
+    @Test
     public void testUpdateBook() throws Exception{
         Book book = new Book();
         book.setTitle("This is my TEST Book!");
@@ -191,4 +176,5 @@ public class BookTests {
         assertEquals("This is my UPDATED TEST Book!",book.getTitle());
 
     }
+
 }
