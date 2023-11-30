@@ -1,23 +1,29 @@
 package com.library.controller;
 
+import com.library.dto.UserDto;
+import com.library.dto.UserNameDto;
 import com.library.model.User;
+import com.library.repository.UserRepository;
 import com.library.service.UserService;
+import com.library.util.UserDtoConverter;
 import io.micrometer.common.util.StringUtils;
 import jakarta.websocket.server.PathParam;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
+@Data
 @Slf4j
 public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService){
-        this.userService = userService;
-    }
+    private UserRepository userRepository;
 
     @GetMapping("/users")
     public List<User> getUsers(){
@@ -28,9 +34,10 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public User getUser(@PathVariable int id){
+    public UserDto getUserById(@PathVariable("id") int id){
         log.debug("In the getUser Users method: " + id);
-        return userService.findById(id);
+        User user = userRepository.findById(id).orElseGet(User::new);
+        return UserDtoConverter.convert(user);
     }
 
     @GetMapping("/user/search")
