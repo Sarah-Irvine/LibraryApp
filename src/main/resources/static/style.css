@@ -1,0 +1,124 @@
+  /* whole page */
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ body{
+     font-family: "Montserrat", sans-serif;
+     color: #0C0B0B;
+     min-height: 100vh;
+     display: flex;
+     flex-direction: column;
+ }
+
+.background{
+     background-repeat: repeat-y;
+     background-size: auto auto;
+     background-position-x: center;
+     background-position-y: center;
+     background-attachment: fixed;
+     background-image: url("bees.png")
+ }
+
+ .container {
+   max-width: 1000px;
+   height: 100%;
+   margin: 0 auto;
+   background-color: #fff19c;
+   padding: 0 20px;
+ }
+
+ .main{
+    margin-top: none;
+    margin-bottom: none;
+ }
+
+ /* header */
+ .header {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 16px 0;
+     margin-top: 20px;
+ }
+
+ .page-title{
+    color: #ff6d6d;
+    font-size: 50px;
+ }
+
+ .book{
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   height: 500px;
+   padding: 16px 0;
+   align-items: center;
+   justify-content: center;
+  }
+
+  .image-background{
+    margin-bottom: 50px;
+  }
+
+ /* image */
+ .book-image {
+   border-radius: 100%;
+   height: 15rem;
+   flex-shrink: 0;
+   width: 15rem;
+   object-fit: cover;
+ }
+
+ .svg-logo{
+      height: 40px;
+ }
+
+.img-right-padding{
+  margin-right: 10px
+}
+
+.img-left-padding{
+    margin-left: 10px
+}
+ /* text decoration */
+ .bold{
+    font-weight: bold;
+ }
+
+ /* footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+  margin: 0;
+}
+
+ /* info card */
+ .card-background {
+   padding: 0.5rem;
+   box-shadow: var(--shadow);
+   border-radius: 0.5rem;
+   display: flex;
+   flex-direction: column;
+ }
+
+ .card {
+   margin: 0.5rem;
+   padding: 1.5rem;
+   background-color: #d8fffe;
+   border-radius: 0.5rem;
+   box-shadow: var(--shadow-small);
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+ }
+
+ .card-item{
+    background-color: #d8fffe;
+    padding: 5px 5px 5px 5px;
+ }
