@@ -2,6 +2,7 @@ package com.library.util;
 
 import com.library.dto.AuthorDto;
 import com.library.dto.BookDto;
+import com.library.dto.GenreDto;
 import com.library.dto.UserDto;
 import com.library.model.Author;
 import com.library.model.Book;

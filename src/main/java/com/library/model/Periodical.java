@@ -35,7 +35,7 @@ public class Periodical {
     @Nonnull
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference(value = "author-periodicals")
     private Author author;
 
     public Periodical(String title, Date publicationDate, Genre genre, Author author){

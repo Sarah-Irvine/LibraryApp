@@ -69,15 +69,15 @@ public class BookTests {
         BookDto book = restTemplate.getForObject("http://localhost:8080/books/100", BookDto.class);
         assertNotNull(book);
         System.out.println(book.getTitle());
-        System.out.println(book.getAuthor().getName());
+        System.out.println(book.getAuthorDto());
     }
 
     @Test
     void testPut() throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
-        BookDto book = restTemplate.getForObject("http://localhost:8080/books/1", BookDto.class);
+        BookDto book = restTemplate.getForObject("http://localhost:8080/book", BookDto.class);
 
-        book.getAuthor().setName("Bryan Hansen");
+        book.setTitle("Pooh bear");
         ObjectMapper mapper = new ObjectMapper();
         String str = mapper.writeValueAsString(book);
         System.out.println(str);

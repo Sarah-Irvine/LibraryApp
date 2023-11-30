@@ -1,6 +1,7 @@
 package com.library.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -15,9 +16,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-/*@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")*/
 public class User {
 
     @Id
@@ -34,10 +32,14 @@ public class User {
     }
 
     //add manyToMany functionality here
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany
     @JoinTable(name="user_book",
     joinColumns = @JoinColumn(name="user_id"),
     inverseJoinColumns = @JoinColumn(name="book_id"))
-    @JsonManagedReference
+    /*@JsonIdentityInfo(
+            generator = ObjectIdGenerators.PropertyGenerator.class,
+            property = "id")*/
+    @JsonManagedReference(value = "users-books")
+    @JsonIgnore
     private List<Book> booksBorrowed;
 }

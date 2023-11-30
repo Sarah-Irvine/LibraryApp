@@ -26,13 +26,13 @@ public class Author {
     private String name;
 
     @OneToMany(mappedBy = "author")
-    @JsonManagedReference
+    @JsonManagedReference(value = "author-periodicals")
     private List<Periodical> periodicals;
 
     //@JsonSerialize(using = BookSerializer.class)
     //@JsonDeserialize(using = BookDeserializer.class)
     @OneToMany(mappedBy = "author")
-    @JsonManagedReference
+    @JsonManagedReference(value = "author-books")
     private List<Book> books;
 
     public Author(String name){
