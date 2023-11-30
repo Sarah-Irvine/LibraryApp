@@ -25,23 +25,9 @@ public class BookDto {
 
     private Genre genre;
 
-    //private Author author;
-
     @JsonProperty("Author Name")
     private AuthorDto authorDto;
 
     private List<UserDto> libraryUsers;
-
-/*    public BookDto (){
-
-    }*/
-
-    /*public BookDto(Integer id, String title, Genre genre, AuthorDto authorName,List<UserDto> libraryUserDtos){
-        this.id = id;
-        this.title = title;
-        this.genre = genre;
-        this.authorName = authorName;
-        this.libraryUsers = libraryUserDtos;
-    }*/
 
 }

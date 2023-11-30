@@ -3,6 +3,7 @@ package com.library.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -32,17 +33,16 @@ public class Periodical {
     @Enumerated(EnumType.STRING)
     private Genre genre;
 
-    @Nonnull
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
+    //@Nonnull
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = true)
     @JsonBackReference(value = "author-periodicals")
-    private Author author;
+    @JsonProperty private Author author;
 
-    public Periodical(String title, Date publicationDate, Genre genre, Author author){
+    public Periodical(String title, Date publicationDate, Genre genre){
         this.title = title;
         this.publicationDate = publicationDate;
         this.genre = genre;
-        this.author = author;
     }
 
 }

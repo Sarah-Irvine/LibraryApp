@@ -25,16 +25,15 @@ public class Movie {
     @Enumerated(EnumType.STRING)
     private Genre genre;
 
-    @Nonnull
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "director_id", referencedColumnName = "id", nullable = false)
+    //@Nonnull
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    @JoinColumn(name = "director_id", referencedColumnName = "id", nullable = true)
     @JsonBackReference(value = "director-movies")
     private Director director;
 
-    public Movie(String title, Genre genre, Director director){
+    public Movie(String title, Genre genre){
         this.title = title;
         this.genre = genre;
-        this.director = director;
     }
 
 }

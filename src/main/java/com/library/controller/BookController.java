@@ -5,11 +5,13 @@ import com.library.util.BookDtoConverter;
 import com.library.model.Book;
 import com.library.repository.BookRepository;
 import com.library.service.BookService;
+import com.library.util.ResourceNotFoundException;
 import io.micrometer.common.util.StringUtils;
 import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -85,9 +87,28 @@ public class BookController {
     }
 
     @PutMapping("/book")
-    public Book updateBook(@RequestBody Book book){
-        return bookService.save(book);
+    public ResponseEntity<Book> updateBook(@RequestBody Book book) {
+        int id = book.getId();
+        Book updateBook = bookRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Book does not exist with id: " + id));
+
+        updateBook.setTitle(book.getTitle());
+        updateBook.setGenre(book.getGenre());
+        updateBook.setAuthor(book.getAuthor());
+        updateBook.setLibraryUsers(book.getLibraryUsers());
+
+        log.debug(String.valueOf(updateBook));
+
+        bookRepository.save(updateBook);
+
+        return ResponseEntity.ok(updateBook);
     }
+
+    /*@PutMapping("/book")
+    public Book updateBook(@RequestBody Book book){
+
+        return bookService.save(book);
+    }*/
 
     @DeleteMapping("/book")
     public void deleteBook(@RequestBody Book book){

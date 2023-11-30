@@ -1,12 +1,15 @@
 package com.library.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.library.model.Director;
 import com.library.model.Genre;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class MovieDto {
 
     private Integer id;
@@ -14,17 +17,7 @@ public class MovieDto {
 
     private Genre genre;
 
-    private Director director;
-
-    public MovieDto (){
-
-    }
-
-    public MovieDto(String title, Genre genre, Director director){
-        this.title = title;
-        this.genre = genre;
-        this.director = director;
-    }
-
+    @JsonProperty("Director Name")
+    private DirectorDto directorDto;
 
 }
