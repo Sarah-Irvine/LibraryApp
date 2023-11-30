@@ -1,5 +1,6 @@
 package com.library.repository;
 
+import com.library.model.Genre;
 import com.library.model.Periodical;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -13,9 +14,9 @@ public interface PeriodicalRepository extends CrudRepository<Periodical,Integer>
 
     List<Periodical> findByTitleNotContains(String notFilter);
 
-    List<Periodical> findByGenreContains(String filter);
+    List<Periodical> findByGenre(Genre genre);
 
-    List<Periodical> findByGenreNotContains(String notFilter);
+    List<Periodical> findByGenreNot(Genre genre);
 
     List<Periodical> findByAuthorNameContains(String filter);
 

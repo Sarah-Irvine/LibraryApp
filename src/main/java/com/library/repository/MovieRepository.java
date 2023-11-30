@@ -13,9 +13,9 @@ public interface MovieRepository extends CrudRepository<Movie,Integer> {
 
     List<Movie> findByTitleNotContains(String notFilter);
 
-    List<Movie> findByGenreContains(String filter);
+    List<Movie> findByGenre(Genre genre);
 
-    List<Movie> findByGenreNotContains(String notFilter);
+    List<Movie> findByGenreNot(Genre genre);
 
     List<Movie> findByDirectorNameContains(String filter);
 
