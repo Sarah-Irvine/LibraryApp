@@ -14,7 +14,7 @@ public interface PeriodicalService {
 
     List<Periodical> findByTitleNotContains(String notFilter);
 
-    List<Periodical> findByGenreContains(String filter);
+    List<Periodical> findByGenreContains(String genre);
 
     List<Periodical> findByGenreNotContains(String notFilter);
 

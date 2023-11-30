@@ -1,5 +1,6 @@
 package com.library.service;
 
+import com.library.model.Genre;
 import com.library.model.Movie;
 import com.library.repository.MovieRepository;
 import lombok.AllArgsConstructor;
@@ -46,13 +47,15 @@ public class MovieServiceImpl implements MovieService{
     //////////////////////////////////////////////////
 
     @Override
-    public List<Movie> findByGenreContains(String filter) {
-        return movieRepository.findByGenreContains(filter);
+    public List<Movie> findByGenreContains(String genreStr) {
+        Genre genre = Genre.valueOf(genreStr);
+        return movieRepository.findByGenre(genre);
     }
 
     @Override
-    public List<Movie> findByGenreNotContains(String notFilter) {
-        return movieRepository.findByGenreNotContains(notFilter);
+    public List<Movie> findByGenreNotContains(String genreStr) {
+        Genre genre = Genre.valueOf(genreStr);
+        return movieRepository.findByGenreNot(genre);
     }
 
 

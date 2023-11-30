@@ -1,5 +1,6 @@
 package com.library.service;
 
+import com.library.model.Genre;
 import com.library.model.Periodical;
 import com.library.repository.PeriodicalRepository;
 import lombok.AllArgsConstructor;
@@ -47,13 +48,15 @@ public class PeriodicalServiceImpl implements PeriodicalService{
     //////////////////////////////////////////////////
 
     @Override
-    public List<Periodical> findByGenreContains(String filter) {
-        return periodicalRepository.findByGenreContains(filter);
+    public List<Periodical> findByGenreContains(String genreStr) {
+        Genre genre = Genre.valueOf(genreStr);
+        return periodicalRepository.findByGenre(genre);
     }
 
     @Override
-    public List<Periodical> findByGenreNotContains(String notFilter) {
-        return periodicalRepository.findByGenreNotContains(notFilter);
+    public List<Periodical> findByGenreNotContains(String genreStr) {
+        Genre genre = Genre.valueOf(genreStr);
+        return periodicalRepository.findByGenreNot(genre);
     }
 
 

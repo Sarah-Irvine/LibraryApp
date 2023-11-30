@@ -15,7 +15,7 @@ public interface MovieService {
 
     List<Movie> findByTitleNotContains(String notFilter);
 
-    List<Movie> findByGenreContains(String filter);
+    List<Movie> findByGenreContains(String genre);
 
     List<Movie> findByGenreNotContains(String notFilter);
 
