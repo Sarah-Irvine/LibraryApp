@@ -30,9 +30,9 @@ public class Book {
     private Genre genre;
 
     @Nonnull
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference(value = "author-books")
     private Author author;
 
     public Book(String title, Genre genre){
@@ -40,11 +40,15 @@ public class Book {
         this.genre = genre;
     }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany
     @JoinTable(name="user_book",
             joinColumns = @JoinColumn(name="book_id"),
             inverseJoinColumns = @JoinColumn(name="user_id"))
-    @JsonBackReference
+    @JsonBackReference(value = "users-books")
+    @JsonIgnore
+    /*@JsonIdentityInfo(
+            generator = ObjectIdGenerators.PropertyGenerator.class,
+            property = "id")*/
     private List<User> libraryUsers;
 
 }

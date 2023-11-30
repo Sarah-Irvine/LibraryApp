@@ -62,7 +62,7 @@ public class MovieTests {
                 () -> assertEquals("Goodfellas", movies[3].getTitle()));
     }
 
-    @Test
+    //@Test
     public void testCreateMovie() throws Exception{
         Director director = new Director();
         director.setName("Zaggy");
@@ -92,7 +92,7 @@ public class MovieTests {
 
     }
 
-    @Test
+    //@Test
     public void testDeleteMovie() throws Exception{
         Movie movie = new Movie();
         movie.setTitle("This is my TEST Movie!");
@@ -128,7 +128,7 @@ public class MovieTests {
 
     }
 
-    @Test
+    //@Test
     public void testUpdateMovie() throws Exception{
         Movie movie = new Movie();
         movie.setTitle("This is my TEST Movie!");

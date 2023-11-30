@@ -1,12 +1,13 @@
 package com.library.dto;
 
-import com.library.model.Genre;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class GenreDto {
 
-    private Genre genre;
+    private String genre;
 }
